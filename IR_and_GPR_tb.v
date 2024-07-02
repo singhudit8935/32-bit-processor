@@ -66,8 +66,49 @@ initial begin
     // $dumpfile("IR_and_GPR.vcd");
     // $dumpvars(0, tb);
 
+    // logical and immediate mode
+    dut.IR=0;
+    dut.`imm_mode=1;
+    dut.`oper_type=6;
+    dut.`rdst=4;
+    dut.`rsrc1=7;
+    dut.`isrc=55;
+    #10;
+    $display("OP:logical AND with immediate mode rdst=%8b rsrc1=%8b imm_d=%8b", dut.GPR[4], dut.GPR[7], dut.`isrc);
+    $display("---------------------------------");
+
+    //logical or operation with immediate mode
+    dut.IR=0;
+    dut.`imm_mode=1;
+    dut.`oper_type=5;
+    dut.`rdst=4;
+    dut.`rsrc1=7;
+    dut.`isrc=56;
+    #10;
+    $display("OP:logical OR with immediate mode rdst=%8b rsrc1=%8b imm_d=%8b", dut.GPR[4], dut.GPR[7], dut.`isrc);
+    $display("---------------------------------");
+
+    dut.IR=0;
+    dut.`imm_mode=1;
+    dut.`oper_type=7;
+    dut.`rdst=4;
+    dut.`rsrc1=7;
+    dut.`rsrc2=5;
+    dut.`isrc=56;
+    #10;
+    $display("OP:logical XOR with immediate mode rdst=%8b rsrc1=%8b imm_d=%8b", dut.GPR[4], dut.GPR[7], dut.`isrc);
+    $display("---------------------------------");
+
+
+
+
     
  
+end
+initial begin 
+    $dumpfile("output.vcd");
+    $dumpvars(1, tb);
+    #200 $finish;
 end
  
 endmodule

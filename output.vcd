@@ -1,0 +1,18 @@
+$date
+	Tue Jul  2 21:42:47 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb $end
+$var integer 32 ! i [31:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100000 !
+$end
+#200000
