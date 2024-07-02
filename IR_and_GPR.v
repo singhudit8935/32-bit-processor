@@ -4,7 +4,7 @@
 `define oper_type IR[31:27]
 `define rdst IR[26:22]
 `define rsrc1 IR[21:17]
-`define imm_mod IR[16]
+`define imm_mode IR[16]
 `define rsrc2 IR[15:11]
 `define isrc IR[15:0] // when working in immediate mode 
 
@@ -32,28 +32,28 @@ module top();
             end
             //case2 of move
             `mov: begin
-                if(`imm_mod)
+                if(`imm_mode)
                     GPR[`rdst]= `isrc;
                 else
                     GPR[`rdst]= `rsrc2;
                 end
             //case 3 of addition
             `add: begin
-                if(`imm_mod)
+                if(`imm_mode)
                     GPR[`rdst]= GPR[`rsrc1] + `isrc;
                 else
                     GPR[`rdst]= GPR[`rsrc1] + GPR[`rsrc2];
             end
             //case 4 of subtraction
             `sub : begin
-                 if(`imm_mod)
+                 if(`imm_mode)
                     GPR[`rdst]= GPR[`rsrc1] - `isrc;
                 else
                     GPR[`rdst]= GPR[`rsrc1] - GPR[`rsrc2];
             end
             //case 5 of multiplication
             `mul: begin
-                 if(`imm_mod)
+                 if(`imm_mode)
                    mul_result = GPR[`rsrc1] * `isrc;
                 else
                     mul_result= GPR[`rsrc1] * GPR[`rsrc2];
